@@ -8,6 +8,9 @@ class WorksController < InheritedResources::Base
 	end
 
 	def create
-		create!(:notice => "Dude! Nice job logging that work."){ root_url }
+		create! do |success, failure|
+		  failure.html { redirect_to root_url, :notice => "Could not save..." }
+		  success.html { redirect_to root_url, :notice => "Dude! Nice job logging that work."}
+		end
 	end
 end

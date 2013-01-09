@@ -1,0 +1,4 @@
+= form_tag categories_path, class: 'form-signin span4 offset4' do
+  %h2.form-signin-heading New Category
+  = text_field_tag :name, params[:name]
+  .input= submit_tag "Create", class: 'btn btn-primary'
