@@ -1,0 +1,48 @@
+.row
+  .span12
+    %h3="Total hours reported per Dude"
+    %table.table.table-bordered.table-striped.table-condensed
+      %thead
+        %th="Who"
+        %th="Total Hours"
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.name
+            %td= user.works.sum(&:hours)
+%hr.clearfix
+.row
+  .span12
+    = form_for @work do |f|
+      %input.datepicker{type: "text", name: "work[day]", value: Date.today.to_s, readonly: true}
+      = f.hidden_field :user_id, value: current_user.id
+      = f.select :category_id, @categories.collect{|c| [c.name, c.id]}
+      = f.text_field :hours, :placeholder => "Hours"
+      = f.text_field :desc, :placeholder => "Desc"
+      = f.submit "Add new row", class: 'btn btn-small btn-primary pull-right'
+%hr.clearfix
+.row
+  .span12
+    %table.table.table-bordered.table-striped
+      %thead
+        %th="Who"
+        %th="Day"
+        %th="Category"
+        %th="Desc"
+        %th="Time"
+      %tbody
+        - @works.each do |work|
+          %tr
+            %td= work.user.name
+            %td= work.day
+            %td= work.category.name
+            %td= work.desc
+            %td= work.hours
+      %tfoot
+        %tr
+          %td=""
+          %td=""
+          %td=""
+          %td=""
+          %td
+            %strong= @works.sum(&:hours)
