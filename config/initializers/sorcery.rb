@@ -371,7 +371,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    user.authentications_class = "User"
+    user.authentications_class = User
 
 
     # User's identifier in authentications class.
