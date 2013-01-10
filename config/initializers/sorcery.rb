@@ -95,7 +95,10 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.github.key = ENV["GITHUB_ID"]
   config.github.secret = ENV["GITHUB_SECRET"]
-  config.github.callback_url = "http://zgtimer.herokuapp.com/oauth/callback?provider=github"
+
+  url = Rails.env.development? ? "timer.dev" : "zgtimer.herokuapp.com"
+  config.github.callback_url = "http://#{url}/oauth/callback?provider=github"
+
   config.github.user_info_mapping = {:email => "name"}
   #
   # config.google.key = ""
