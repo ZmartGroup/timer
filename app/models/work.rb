@@ -4,4 +4,6 @@ class Work < ActiveRecord::Base
 	belongs_to :user
 
 	validates_presence_of :hours
+
+	default_scope order('day DESC, user_id')
 end
