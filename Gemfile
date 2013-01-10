@@ -23,6 +23,8 @@ gem 'omniauth-github'
 
 gem 'inherited_resources'
 
+gem 'curb'
+
 group :development, :test do
 	gem 'quiet_assets'
 	gem 'debugger'

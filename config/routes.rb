@@ -9,8 +9,10 @@ Timer::Application.routes.draw do
   match "logout" => "sessions#destroy", :as => "logout"
   match "login" => "sessions#new", :as => "login"
 
+  resources :webhooks
 
 	resources :categories
 	resources :works
+  resources :issues, only: [:index] 
 	root to: 'works#index'
 end

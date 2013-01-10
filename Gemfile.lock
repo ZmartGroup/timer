@@ -41,6 +41,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     columnize (0.3.6)
+    curb (0.8.1)
     debugger (1.2.3)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -155,6 +156,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-datepicker-rails
   coffee-rails (~> 3.2.1)
+  curb
   debugger
   haml
   inherited_resources

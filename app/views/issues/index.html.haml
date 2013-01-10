@@ -1,0 +1,23 @@
+.row
+  .span12
+    - @issues.group_by(&:repository).each do |repo,issues|
+      %h3=repo.name
+      %table.table.table-bordered.table-striped.table-condensed
+        %thead
+          %th= "#"
+          %th= "Title"
+          %th= "Labels"
+          %th= "State"
+          %th= "Created"
+          %th= "Time spent"
+        %tbody
+          - issues.each do |issue|
+            %tr
+              %td= "##{issue.number}"
+              %td= issue.title
+              %td
+                - issue.labels.each do |label|
+                  %span.label{style: "font-family: Helvetica; color: #006605; background-color: ##{label.color}"}=label.name
+              %td= issue.state
+              %td= issue.created_at
+              %td= issue.time_spent

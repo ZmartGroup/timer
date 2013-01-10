@@ -14,6 +14,11 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<span class="brand pull-left"><a href="/">Timer</a></span>
+				<ul class="pull-left nav">
+					
+					<%= menu_li "Report", works_path %>
+					<%= menu_li "Issues", issues_path %>
+				</ul>
 				<ul class="pull-right nav">
 					<li class="user">
 						<%= image_tag current_user.avatar, size: "25x25" unless current_user.avatar.blank? %>
