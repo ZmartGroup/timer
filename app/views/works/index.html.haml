@@ -7,7 +7,7 @@
         %th="Category"
         - @users.each do |user|
           %td
-            = image_tag user.gravatar, size: "20x20" unless user.email.blank?
+            = image_tag user.avatar, size: "20x20" unless user.email.blank?
             = user.name
         %th="Total"
       %tbody

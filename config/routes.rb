@@ -1,11 +1,14 @@
 Timer::Application.routes.draw do
 
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
 
+	post '/oauth/request_token' => 'sessions#new'
 
-	match "oauth/callback" => "oauths#callback"
-	match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+ 	match '/auth/:provider/callback' => 'sessions#create'
+  match '/auth/failure' => 'sessions#failure'
+
+  match "logout" => "sessions#destroy", :as => "logout"
+  match "login" => "sessions#new", :as => "login"
+
 
 	resources :categories
 	resources :works

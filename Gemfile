@@ -21,6 +21,7 @@ gem 'github_api'
 
 gem 'pg'
 gem 'sorcery'
+gem 'omniauth-github'
 
 gem 'inherited_resources'
 

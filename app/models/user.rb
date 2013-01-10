@@ -6,12 +6,6 @@ class User < ActiveRecord::Base
   default_scope order('name')
 
 
-  def gravatar
-  	hash =  Digest::MD5.hexdigest(self.email)
-  	"http://www.gravatar.com/avatar/#{hash}"
-  end
-
-
   def hours_for_category(category)
   	Work.where(category: category, user: self).sum(&:hours)
   end
