@@ -1,17 +1,26 @@
 .row
   .span12
-    %h3="Total hours reported per Dude"
     %table.table.table-bordered.table-striped.table-condensed
       %thead
-        %th="Who"
-        %th="Total Hours"
-      %tbody
+        %th="Category"
         - @users.each do |user|
+          %td
+            = image_tag user.gravatar, size: "20x20"
+            = user.name
+        %th="Total"
+      %tbody
+        - @categories.each do |category|
           %tr
-            %td
-              = image_tag user.gravatar, size: "20x20"
-              = user.name
-            %td= user.works.sum(&:hours)
+            %td= category.name
+            - @users.each do |user|
+              %td= category.works.where(user_id: user.id).sum(&:hours)
+            %td= category.works.sum(&:hours)
+      %tfoot
+        %tr
+          %td="Total:"
+          - @users.each do |user|
+            %td=user.works.sum(&:hours)
+          %td= @works.sum(&:hours)
 %hr.clearfix
 .row
   .span12
@@ -40,11 +49,3 @@
             %td= work.category.name
             %td= work.desc
             %td= work.hours
-      %tfoot
-        %tr
-          %td=""
-          %td=""
-          %td=""
-          %td=""
-          %td
-            %strong= @works.sum(&:hours)
