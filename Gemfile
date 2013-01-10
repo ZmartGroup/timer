@@ -17,6 +17,8 @@ end
 
 gem 'haml'
 
+gem 'github_api'
+
 gem 'pg'
 gem 'sorcery'
 

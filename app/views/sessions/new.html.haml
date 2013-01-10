@@ -1,5 +1,2 @@
-= form_tag sessions_path, class: 'form-signin span4 offset4' do
-  %h2.form-signin-heading Login
-  = text_field_tag :email, params[:email]
-  = password_field_tag :password
-  .input= submit_tag "Login", class: 'btn btn-primary'
+%h2.form-signin-heading Login
+= link_to "Login with Github", auth_at_provider_path(:provider => :github), class: 'btn btn-primary'

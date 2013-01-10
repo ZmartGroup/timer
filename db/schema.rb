@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130109142623) do
+ActiveRecord::Schema.define(:version => 20130110113607) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20130109142623) do
     t.string   "salt"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "github_uid"
   end
 
   create_table "works", :force => true do |t|
@@ -36,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20130109142623) do
     t.datetime "updated_at",  :null => false
     t.date     "day"
     t.text     "desc"
+    t.integer  "project_id"
+    t.integer  "issue_id"
   end
 
 end

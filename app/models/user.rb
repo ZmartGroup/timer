@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  attr_accessible :name, :email, :password
+  attr_accessible :name, :email, :password, :github_uid
   has_many :works
 
   default_scope order('name')
@@ -14,5 +14,9 @@ class User < ActiveRecord::Base
 
   def hours_for_category(category)
   	Work.where(category: category, user: self).sum(&:hours)
+  end
+
+  def self.find_by_provider_and_uid(provider, uid)
+    where(github_uid: uid).first
   end
 end
