@@ -4,4 +4,10 @@ class User < ActiveRecord::Base
   has_many :works
 
   default_scope order('name')
+
+
+  def gravatar
+  	hash =  Digest::MD5.hexdigest(self.email)
+  	"http://www.gravatar.com/avatar/#{hash}"
+  end
 end

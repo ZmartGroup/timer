@@ -8,7 +8,9 @@
       %tbody
         - @users.each do |user|
           %tr
-            %td= user.name
+            %td
+              = image_tag user.gravatar, size: "20x20"
+              = user.name
             %td= user.works.sum(&:hours)
 %hr.clearfix
 .row
