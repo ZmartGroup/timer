@@ -7,7 +7,8 @@
           %td
             = image_tag user.avatar, size: "20x20" unless user.avatar.blank?
             = user.name
-        %th="Total"
+        %th
+          %strong="Total"
       %tbody
         - @categories.each do |category|
           %tr
@@ -19,8 +20,10 @@
         %tr
           %td="Total:"
           - @users.each do |user|
-            %td=user.works.sum(&:hours)
-          %td= @works.sum(&:hours)
+            %td
+              %strong=user.works.sum(&:hours)
+          %td
+            %strong= @works.sum(&:hours)
 %hr.clearfix
 .row
   .span12
