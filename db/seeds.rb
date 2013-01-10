@@ -7,11 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.create(name: 'Kim', email: 'kim.fransman@gmail.com', password: 'password')
-User.create(name: 'Micke', email: 'mikael.bjorkman@gmail.com', password: 'password')
-User.create(name: 'Niklas', email: 'niklas.lun@gmail.com', password: 'password')
-User.create(name: 'Adrian', email: 'adrian@zmartdev.co.za', password: 'password')
-User.create(name: 'Quentin', email: 'quentin@zmartdev.co.za', password: 'password')
 
 Category.create(name: 'PPM')
 Category.create(name: 'Server Admin')

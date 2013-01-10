@@ -24,4 +24,11 @@ gem 'sorcery'
 
 gem 'inherited_resources'
 
-gem 'unicorn'
+group :development, :test do
+	gem 'quiet_assets'
+	gem 'debugger'
+end
+
+group :production do
+	gem 'unicorn'
+end

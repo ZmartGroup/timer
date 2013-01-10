@@ -16,7 +16,12 @@ class User < ActiveRecord::Base
   	Work.where(category: category, user: self).sum(&:hours)
   end
 
+  def self.load_from_provider(provider,uid)
+    where(github_uid: uid).first
+  end
+
   def self.find_by_provider_and_uid(provider, uid)
     where(github_uid: uid).first
   end
+
 end

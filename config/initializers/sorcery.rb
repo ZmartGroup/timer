@@ -96,7 +96,7 @@ Rails.application.config.sorcery.configure do |config|
   config.github.key = ENV["GITHUB_ID"]
   config.github.secret = ENV["GITHUB_SECRET"]
   config.github.callback_url = "http://#{ENV["GITHUB_CALLBACK_DOMAIN"]}/oauth/callback?provider=github"
-  config.github.user_info_mapping = {:email => "name"}
+  config.github.user_info_mapping = {email: "email", name: "name", uid: "github_uid"}
   #
   # config.google.key = ""
   # config.google.secret = ""
@@ -383,13 +383,13 @@ Rails.application.config.sorcery.configure do |config|
     # Provider's identifier in authentications class.
     # Default: `:provider`
     #
-    # user.provider_attribute_name =
+    user.provider_attribute_name = nil
 
 
     # User's external unique identifier in authentications class.
     # Default: `:uid`
     #
-    # user.provider_uid_attribute_name =
+    user.provider_uid_attribute_name = :github_uid
   end
 
   # This line must come after the 'user config' block.
