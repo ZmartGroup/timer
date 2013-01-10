@@ -1,5 +1,3 @@
-= @scopes.inspect
-
 .row
   .span12
     %table.table.table-bordered.table-striped.table-condensed
@@ -30,6 +28,7 @@
       %input.datepicker{type: "text", name: "work[day]", value: Date.today.to_s, readonly: true}
       = f.hidden_field :user_id, value: current_user.id
       = f.select :category_id, @categories.collect{|c| [c.name, c.id]}
+      = f.select :github_issue, @issues.sort_by{|i| i[:repository] }.collect{|i| ["#{i[:repository]}:#{i[:number]} #{i[:title]}", "#{i[:repository]}/#{i[:number]}"]}, include_blank: true, placeholder: "Github Issue"
       = f.text_field :hours, :placeholder => "Hours"
       = f.text_field :desc, :placeholder => "Desc"
       = f.submit "Add new row", class: 'btn btn-small btn-primary pull-right'
@@ -41,6 +40,7 @@
         %th="Who"
         %th="Day"
         %th="Category"
+        %th="GH Issue"
         %th="Desc"
         %th="Time"
       %tbody
@@ -49,5 +49,6 @@
             %td= work.user.name
             %td= work.day
             %td= work.category.name
+            %td= link_to work.github_issue, work.github_issue_url
             %td= work.desc
             %td= work.hours

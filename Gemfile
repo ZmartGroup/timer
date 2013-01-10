@@ -17,10 +17,8 @@ end
 
 gem 'haml'
 
-gem 'github_api'
-
 gem 'pg'
-gem 'sorcery'
+gem 'sorcery', '0.7.13'
 gem 'omniauth-github'
 
 gem 'inherited_resources'

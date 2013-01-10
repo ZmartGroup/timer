@@ -1,13 +1,18 @@
+require 'open-uri'
 class WorksController < InheritedResources::Base
 
 	def index
+		uri = "https://api.github.com/orgs/zmartgroup/issues?access_token=#{current_user.github_token}&filter=all&per_page=100"
+		content = open(uri).read
+		parsed_json = ActiveSupport::JSON.decode(content)
 
-		# debugger
-		# github = Github.new client_id: ENV["GITHUB_ID"], client_secret: ENV["GITHUB_SECRET"]
-		# token = github.get_token( session[:code] )
-		# github = Github.new :oauth_token => token
-		# @scopes = github.scopes.list
-
+		@issues = Array.new
+		parsed_json.each do |r|
+			repository = r['repository']['name']
+			number 	= r['number']
+			title 	= r['title']
+			@issues << {repository: repository, number: number, title: title}
+		end
 
 		@work = Work.new
 		@users = User.all

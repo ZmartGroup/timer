@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110151456) do
+ActiveRecord::Schema.define(:version => 20130110163530) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(:version => 20130110151456) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.integer  "hours"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.date     "day"
     t.text     "desc"
     t.integer  "project_id"
-    t.integer  "issue_id"
+    t.string   "github_issue"
   end
 
 end
