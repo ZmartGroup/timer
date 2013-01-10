@@ -12,9 +12,9 @@ module Github
       self.state      = hash["state"]
       self.created_at = parse_date hash["created_at"]
       self.closed_at  = parse_date hash["closed_at"]
-      self.labels     = Github::Label.parse_list(hash["labels"])
+      self.labels     = Label.parse_list(hash["labels"])
       self.user       = Github::User.parse_hash(hash)
-      self.repository = Github::Repository.parse_hash(hash["repository"])
+      self.repository = Repository.parse_hash(hash["repository"])
     end
 
     def self.fetch_all(user)
