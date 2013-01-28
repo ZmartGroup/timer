@@ -11,10 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110192445) do
+ActiveRecord::Schema.define(:version => 20130128110146) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "issues", :force => true do |t|
+    t.integer  "github_id"
+    t.integer  "number"
+    t.string   "title"
+    t.string   "body"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.datetime "closed_at"
+  end
+
+  create_table "labels", :force => true do |t|
+    t.string   "name"
+    t.string   "color"
+    t.string   "url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -32,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20130110192445) do
   create_table "works", :force => true do |t|
     t.integer  "category_id"
     t.integer  "user_id"
-    t.integer  "hours"
+    t.float    "hours"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.date     "day"
